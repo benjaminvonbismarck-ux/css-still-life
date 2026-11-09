@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Still Life</title>
+  <!-- Starting frame from netnet’s CSS Art Template: https://netnet.studio/?template=css-art -->
+  <style>
+
+    * { box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #777971;
+      font-family: Arial, sans-serif;
+    }
+
+    .frame {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 50vw;
+      overflow: hidden;
+      background: linear-gradient(110deg, #eeeae0, #c7c5ba);
+    }
+
+    .screen {
+      position: absolute;
+      top: -3%;
+      left: 8%;
+      width: 73%;
+      height: 36%;
+      background: linear-gradient(100deg, #75756c, #95948b);
+      border: 0.7vw solid #22221f;
+      transform: rotate(-1deg);
+    }
+
+    .table {
+      position: absolute;
+      top: 50%;
+      left: -12%;
+      width: 124%;
+      height: 64%;
+      border-radius: 35% 35% 0 0;
+      background: linear-gradient(#9a9a90, #777971 78%);
+    }
+
+    .shadow {
+      position: absolute;
+      top: 67%;
+      left: 20%;
+      width: 68%;
+      height: 8%;
+      border-radius: 50%;
+      background: rgba(33, 29, 21, 0.33);
+      filter: blur(0.7vw);
+      transform: rotate(2deg);
+    }
+
+    .pot {
+      position: absolute;
+      left: 22%;
+      top: 15%;
+      width: 19%;
+      height: 55%;
+      z-index: 2;
+    }
+
+    .pot-handle {
+      position: absolute;
+      left: -25%;
+      top: 18%;
+      width: 30%;
+      height: 34%;
+      border: 1.7vw solid #25231f;
+      border-right: 0;
+      border-bottom: 0;
+      border-radius: 70% 0 0 30%;
+      transform: rotate(6deg);
+    }
+
+    .pot-base {
+      position: absolute;
+      bottom: 0;
+      left: 8%;
+      width: 86%;
+      height: 38%;
+      border-radius: 18% 18% 28% 28% / 68% 68% 10% 10%;
+      background: linear-gradient(90deg, #565953, #b9b9b0 12%, #71746e 24%, #e2e2d6 35%, #888a82 52%, #454742 78%, #a5a49a 94%, #53554e);
+      box-shadow: inset 0 -0.4vw #53514b;
+    }
+
+    .pot-neck {
+      position: absolute;
+      left: 16%;
+      top: 48%;
+      width: 69%;
+      height: 15%;
+      border-radius: 0 0 18% 18%;
+      background: linear-gradient(90deg, #a03419, #ce471e, #8e2d17);
+    }
+
+    .pot-body {
+      position: absolute;
+      top: 15%;
+      width: 100%;
+      height: 39%;
+      border-radius: 4% 9% 23% 20% / 7% 8% 22% 20%;
+      background: linear-gradient(100deg, #e86b3d 8%, #a33317 11%, #b83b19 64%, #d64d22 83%, #f27749);
+      box-shadow: inset 0 -0.7vw rgba(99, 30, 12, 0.3);
+    }
+
+    .pot-lid {
+      position: absolute;
+      top: 8%;
+      width: 100%;
+      height: 10%;
+      border-radius: 58% 58% 16% 16%;
+      background: linear-gradient(165deg, #ff9058, #ee511f 68%, #a8371a);
+    }
+
+    .pot-knob {
+      position: absolute;
+      top: 0;
+      left: 40%;
+      width: 17%;
+      height: 10%;
+      border-radius: 15% 15% 40% 40%;
+      background: #302822;
+    }
+
+    .tin {
+      position: absolute;
+      overflow: hidden;
+      width: 20%;
+      height: 39%;
+      border-radius: 7% 7% 9% 9% / 4% 4% 5% 5%;
+      background: linear-gradient(90deg, #b69b11, #f8d938 20%, #ebc323 75%, #ad8616);
+      box-shadow: inset 0 -0.45vw #9a8a61;
+    }
+
+    .tin-back {
+      top: 33%;
+      left: 43%;
+      height: 35%;
+      z-index: 1;
+    }
+
+    .tin-front {
+      top: 32.5%;
+      left: 55.5%;
+      z-index: 3;
+    }
+
+    .tin-lid {
+      height: 8%;
+      background: linear-gradient(#fbe05b, #d3b21a);
+      border-radius: 35% 35% 15% 15%;
+      box-shadow: 0 0.25vw 0.25vw rgba(90, 66, 10, 0.28);
+    }
+
+    .tin-name {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      margin: 0;
+      color: #151d28;
+      font-weight: bold;
+      font-size: 3.65vw;
+      line-height: 0.95;
+      letter-spacing: -0.15vw;
+    }
+
+    .tin-band {
+      position: absolute;
+      left: 0;
+      bottom: 2%;
+      width: 100%;
+      height: 24%;
+      background: linear-gradient(90deg, #911e22, #b8302f, #861f22);
+    }
+
+    .cup {
+      position: absolute;
+      width: 9.5%;
+      height: 14%;
+      z-index: 4;
+    }
+
+    .cup-bottom { left: 41.5%; top: 57.5%; }
+    .cup-middle { left: 41.5%; top: 44.7%; z-index: 5; }
+    .cup-top { left: 61.5%; top: 18.6%; }
+
+    .cup-handle {
+      position: absolute;
+      top: 19%;
+      left: -24%;
+      width: 34%;
+      height: 51%;
+      border: 0.55vw solid #d6d4c6;
+      border-radius: 50%;
+      box-shadow: inset 0.16vw 0.15vw 0.25vw #8d8c81;
+    }
+
+    .cup-body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 12% 12% 24% 24% / 7% 7% 15% 15%;
+      background: linear-gradient(#f4f0e1 4%, #182b58 4%, #182b58 23%, #eee9d8 23%, #eee9d8 37%, #182b58 37%, #182b58 54%, #eee9d8 54%, #eee9d8 67%, #182b58 67%, #182b58 86%, #d7d4c4 86%);
+      box-shadow: inset -0.85vw -0.3vw 1.15vw rgba(32, 32, 28, 0.34);
+    }
+
+    .flag {
+      position: absolute;
+      top: 25%;
+      left: 0;
+      width: 2.4vw;
+      height: 4.8vw;
+      overflow: hidden;
+    }
+
+    .flag-shape {
+      position: absolute;
+      top: 15%;
+      left: -70%;
+      width: 3.4vw;
+      height: 3.4vw;
+      background: #ab2d2d;
+      transform: rotate(45deg);
+    }
+
+    .cup-top .flag {
+      top: 10%;
+      left: 38%;
+      width: 3.7vw;
+      height: 7.4vw;
+    }
+
+    .cup-top .flag-shape {
+      width: 5.2vw;
+      height: 5.2vw;
+    }
+
+    .star {
+      position: absolute;
+      top: 35%;
+      left: 46%;
+      color: #fff3dc;
+      font-size: 1.7vw;
+    }
+
+    @media (max-width: 900px) {
+      .frame { height: 76vw; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="frame" role="img" aria-label="CSS still life of a moka pot, coffee tins and striped cups">
+    <div class="screen"></div>
+    <div class="table"></div>
+    <div class="shadow"></div>
+
+    <div class="pot">
+      <div class="pot-handle"></div>
+      <div class="pot-base"></div>
+      <div class="pot-neck"></div>
+      <div class="pot-body"></div>
+      <div class="pot-lid"></div>
+      <div class="pot-knob"></div>
+    </div>
+
+    <div class="tin tin-back">
+      <div class="tin-lid"></div>
+      <p class="tin-name">CAFÉ<br>BUSTELO</p>
+      <div class="tin-band"></div>
+    </div>
+    <div class="tin tin-front">
+      <div class="tin-lid"></div>
+      <p class="tin-name">CAFÉ<br>BUSTELO</p>
+      <div class="tin-band"></div>
+    </div>
+
+    <div class="cup cup-bottom">
+      <div class="cup-handle"></div>
+      <div class="cup-body"><div class="flag"><div class="flag-shape"></div></div></div>
+    </div>
+    <div class="cup cup-middle">
+      <div class="cup-handle"></div>
+      <div class="cup-body"><div class="flag"><div class="flag-shape"></div></div></div>
+    </div>
+    <div class="cup cup-top">
+      <div class="cup-handle"></div>
+      <div class="cup-body"><div class="flag"><div class="flag-shape"></div></div><span class="star">★</span></div>
+    </div>
+  </div>
+</body>
+</html>
